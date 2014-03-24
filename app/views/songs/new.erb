@@ -1,0 +1,34 @@
+<br />
+<form action="/songs" method="post" autocomplete="on">
+  <div>
+    <label>Title</label>
+    <input 
+      type ="text" 
+      name="song_title" 
+      autofocus 
+      placeholder="ie Wicked Games"
+      value="<% @song.song_title %>">
+  </div><br />
+
+  <div>
+    <label>Artist</label>
+    <input 
+      type ="text" 
+      name="artist" 
+      placeholder="ie Chris Issac"
+      value="<% @song.artist %>">
+  </div><br />
+
+  <div>
+    <label>URL</label>
+    <input 
+      type ="text" 
+      name="url" 
+      placeholder="not needed"
+      value="<% @song.url %>">
+  </div><br />
+  
+  <div>
+    <input type ="submit" value="Submit" name="post your tune" >
+  </div>
+</form>

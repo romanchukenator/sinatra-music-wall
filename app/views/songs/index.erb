@@ -1,0 +1,10 @@
+<% @songs.each do |song| %>
+  
+  <h3><%= song.song_title %></h3>
+  <h4><%= song.artist %></h4>
+  <p>
+  <a href="<%= song.url %>"><%= song.url %></a><br />
+  <small><%= song.created_at %></small>
+  </p>
+  <hr/>
+<% end %>
