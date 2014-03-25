@@ -4,32 +4,45 @@
   action = "/sign_up"
   method = "POST"
   autocomplete = "on"
+  class="form-inline"
+  role="form"
 >
 
-  <div>
-    <label>Email address</label>
+
+
+
+      
+  <div
+    class = "form-group"
+    for = "exampleInputEmail2"
+  >
+    <label class="sr-only" >Email address</label>
     <input 
       autofocus
-      placeholder = "email address"
-      type = "text"
-      name = "email" 
+      placeholder = "Enter email"
+      type = "email"
+      name = "email"
+      class = "form-control"
+      id = "exampleInputEmail2" 
       value = "<%= @user.email %>"
       >
-  </div>
-
-  <div>
-    <label>Password</label>
+      
+    <label class="sr-only" >Password</label>
     <input
       autofocus 
-      placeholder = "password"
-      type = "text"
+      placeholder = "Enter password"
+      type = "password"
       name = "password" 
+      class = "form-control"
+      id = "exampleInputEmail2"
       value = "<%= @user.password %>"
-      >
-  </div>
+    >
 
-  <div>
-    <input type = "submit" value = "Submit">
+    <input 
+      type = "submit" 
+      value = "Submit"
+      class="btn btn-default"
+    >
   </div>
 
 </form>

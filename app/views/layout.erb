@@ -11,22 +11,39 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/stylesheets/application.css">
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/javascript/application.js"></script>
+  
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
   <title></title>
 </head>
 <body>
-  <header>
+  <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <% if current_user %>
-    <p>Hey there, <%= current_user.email %> <small>/ <a href = "/log_out">Log out</a></small></p>
-
+    <p class="navbar-text navbar-right">
+    Hey there, <%= current_user.email %> / <a href = "/log_out">log out</a>
+    </p>
   <% else %>
-    <p><a href="/log_in">Log in</a> / <a href="/sign_up">Sign up</a></p>
+    <p class="navbar-text navbar-right"><a href="/log_in">Log in</a> / <a href="/sign_up">Sign up</a></p>
   <% end %>
+  <a class="navbar-brand" href = "/">Sinatra's Wall of Songs</a>
   </header>
 
   <%= yield %>
+
+<footer class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+  <div>
+    <h5><a href = "">Submit a new song</a></h5>
+  </div>
+</footer>
+
 </body>
 </html>

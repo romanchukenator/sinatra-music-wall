@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325042446) do
+ActiveRecord::Schema.define(version: 20140325233116) do
 
   create_table "songs", force: true do |t|
     t.string   "song_title"
@@ -19,8 +19,17 @@ ActiveRecord::Schema.define(version: 20140325042446) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "genre"
+    t.integer  "user_id",      limit: 255
+    t.integer  "upvote_count",             default: 0
+  end
+
+  create_table "tables", force: true do |t|
+    t.string   "user_review"
+    t.integer  "user_rating"
     t.string   "user_id"
-    t.integer  "upvote_count", default: 0
+    t.string   "song_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "upvotes", force: true do |t|

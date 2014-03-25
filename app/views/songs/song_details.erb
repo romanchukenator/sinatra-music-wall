@@ -2,3 +2,14 @@
 <h2><%= @song.song_title %><small>   by <%= @song.artist %></small></h2>
 
 <p><a href = "<%= @song.url %>"><%= @song.url %></a></p>
+
+
+
+
+
+<hr/>
+<h5>These fuckers have shit to say about this song:</h5>
+
+<% Upvote.where(song_id: @song.id).each do |hubub| %>
+  <p><%= User.find(hubub.user_id).email %></p>
+<% end %>

@@ -8,70 +8,87 @@
     </ul>
   </div>
 <% end %>
-
 <br />
-<form   
-  action="/songs" 
-  method="POST" 
-  autocomplete="on">
 
-  <div>
-    <label>Title</label>
-    <input 
-      type ="text" 
-      name="song_title" 
-      autofocus 
-      placeholder="ie Wicked Games"
-      value="<%= @song.song_title %>">
-  </div><br />
+<div class="col-xs-4">
+  <h2>New song details</h2>
+  <form   
+    action = "/songs" 
+    method = "POST" 
+    autocomplete = "on"
+    class = "form-group"
+    role = "form"
+  >
 
-  <div>
-    <label>Artist</label>
-    <input 
-      type ="text" 
-      name ="artist" 
-      placeholder ="ie Chris Issac"
-      value ="<%= @song.artist %>">
-  </div><br />
+    <div
+      class = "form-group"
+      for = "exampleInputEmail2"
+    >
+      <label class="sr-only" >Title</label>
+      <input 
+        type ="text" 
+        name="song_title" 
+        autofocus
+        class = "form-control"
+        id = "exampleInputEmail2" 
+        placeholder="Enter music track"
+        value="<%= @song.song_title %>">
+    </div>
 
-  <div>
-    <label>Genre</label>
-      <select name = "genre">
-        <option value ="Rockabilly">Rockabilly</option>
-        <option value ="Alt Rock">Alt Rock</option>
-        <option value ="Cello Rock">Cello Rock</option>
-        <option value ="Jesus Rock">Jesus Rock</option>
-        <option value ="New Prog Rock">New Prog Rock</option>
-        <option value ="Mth Rock">Math Rock</option>
-        <option value ="Funk Rock">Funk Rock</option>
-        <option value ="Monk Rock">Monk Rock</option>
-      </select>
-  </div>
+    <div
+      class="form-group"
+      for="exampleInputEmail2"
+    >
+      <label class="sr-only" >Artist</label>
+      <input 
+        type ="text" 
+        name ="artist" 
+        class = "form-control"
+        id = "exampleInputEmail2" 
+        placeholder ="Perhaps Chris Issac?"
+        value ="<%= @song.artist %>"
+      >
+    </div>
 
-  <div>
-    <label>URL</label>
-    <input 
-      type ="text" 
-      name="url" 
-      placeholder="not needed"
-      value="<%= @song.url %>">
-  </div><br />
+    <div
+      class="form-group"
+      for="exampleInputEmail2"
+    >
+      <label class="sr-only" >Genre</label>
+        <select class = "form-control" name = "genre">
+          <option selected = "selected" disabled = "disabled">Genre</option>
+          <option value ="Rockabilly">Rockabilly</option>
+          <option value ="Alt Rock">Alt Rock</option>
+          <option value ="Cello Rock">Cello Rock</option>
+          <option value ="Jesus Rock">Jesus Rock</option>
+          <option value ="New Prog Rock">New Prog Rock</option>
+          <option value ="Mth Rock">Math Rock</option>
+          <option value ="Funk Rock">Funk Rock</option>
+          <option value ="Monk Rock">Monk Rock</option>
+        </select>
+    </div>
 
-  <div>
-    <input type ="submit" value="Submit">
-  </div>
-</form>
+    <div
+      class="form-group"
+      for="exampleInputEmail2"
+    >
+      <label class="sr-only" >URL</label>
+      <input 
+        type ="text" 
+        name="url" 
+        class = "form-control"
+        id = "exampleInputEmail2" 
+        placeholder="URL?"
+        value="<%= @song.url %>"
+      >
+    </div>
+    <br />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div
+      class="form-group"
+      for="exampleInputEmail2"
+    >
+      <input type = "submit" value = "Submit" class = "btn btn-default" >
+    </div>
+  </form>
+</div>>

@@ -1,4 +1,4 @@
-<% @songs.order("upvote_count DESC").each do |song| %>
+<% @songs.each do |song| %>
   <h3>
   <a href="/songs/<%= song.id %>">
   <%= song.song_title %>
@@ -10,6 +10,7 @@
   <p>Likes: <%= song.upvote_count %></p>
   
   <% if current_user %>
+
     <% unless current_user.already_voted?(song) %>
       <form 
         action = "songs/like/<%= song.id %>/<%= current_user.id %>" 
@@ -19,6 +20,7 @@
         <input 
           type = "submit" 
           value = "Like!"
+          class="btn btn-primary btn-xs"
         >
       </form>
     <% end %>
@@ -32,8 +34,10 @@
         <input 
           type = "submit" 
           value = "Unlike!"
+          class="btn btn-danger btn-xs"
         >
       </form>
+
     <% end %>
 <% end %>
 
