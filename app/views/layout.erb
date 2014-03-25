@@ -18,6 +18,15 @@
   <title></title>
 </head>
 <body>
+  <header>
+  <% if current_user %>
+    <p>Hey there, <%= current_user.email %> <small>/ <a href = "/log_out">Log out</a></small></p>
+
+  <% else %>
+    <p><a href="/log_in">Log in</a> / <a href="/sign_up">Sign up</a></p>
+  <% end %>
+  </header>
+
   <%= yield %>
 </body>
 </html>

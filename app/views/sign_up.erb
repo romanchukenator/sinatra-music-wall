@@ -1,0 +1,35 @@
+<h3>Sign up</h3>
+
+<form
+  action = "/sign_up"
+  method = "POST"
+  autocomplete = "on"
+>
+
+  <div>
+    <label>Email address</label>
+    <input 
+      autofocus
+      placeholder = "email address"
+      type = "text"
+      name = "email" 
+      value = "<%= @user.email %>"
+      >
+  </div>
+
+  <div>
+    <label>Password</label>
+    <input
+      autofocus 
+      placeholder = "password"
+      type = "text"
+      name = "password" 
+      value = "<%= @user.password %>"
+      >
+  </div>
+
+  <div>
+    <input type = "submit" value = "Submit">
+  </div>
+
+</form>

@@ -1,5 +1,20 @@
+<% if @song.errors.any? %>
+  <div>
+    <strong>Some issues with your message, please fix them:</strong>
+    <ul>
+      <% @song.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <br />
-<form action="/songs" method="post" autocomplete="on">
+<form   
+  action="/songs" 
+  method="POST" 
+  autocomplete="on">
+
   <div>
     <label>Title</label>
     <input 
@@ -7,17 +22,31 @@
       name="song_title" 
       autofocus 
       placeholder="ie Wicked Games"
-      value="<% @song.song_title %>">
+      value="<%= @song.song_title %>">
   </div><br />
 
   <div>
     <label>Artist</label>
     <input 
       type ="text" 
-      name="artist" 
-      placeholder="ie Chris Issac"
-      value="<% @song.artist %>">
+      name ="artist" 
+      placeholder ="ie Chris Issac"
+      value ="<%= @song.artist %>">
   </div><br />
+
+  <div>
+    <label>Genre</label>
+      <select name = "genre">
+        <option value ="Rockabilly">Rockabilly</option>
+        <option value ="Alt Rock">Alt Rock</option>
+        <option value ="Cello Rock">Cello Rock</option>
+        <option value ="Jesus Rock">Jesus Rock</option>
+        <option value ="New Prog Rock">New Prog Rock</option>
+        <option value ="Mth Rock">Math Rock</option>
+        <option value ="Funk Rock">Funk Rock</option>
+        <option value ="Monk Rock">Monk Rock</option>
+      </select>
+  </div>
 
   <div>
     <label>URL</label>
@@ -25,10 +54,24 @@
       type ="text" 
       name="url" 
       placeholder="not needed"
-      value="<% @song.url %>">
+      value="<%= @song.url %>">
   </div><br />
-  
+
   <div>
-    <input type ="submit" value="Submit" name="post your tune" >
+    <input type ="submit" value="Submit">
   </div>
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,9 +1,33 @@
 <% @songs.each do |song| %>
+  <h3>
+  <a href="/songs/<%= song.id %>">
+  <%= song.song_title %>
+  </a>
+  <small> by <%= song.artist %></small>
+  </h3>
   
-  <h3><%= song.song_title %></h3>
-  <h4><%= song.artist %></h4>
+  <h4><%= song.genre %></h4>
+ 
+
+
+
+
+<form 
+  action = "songs/like" 
+  method = "POST" 
+  type="button">
+  <input 
+    type = "submit" 
+    value="Like!">
+</form>
+
+
+
+
+
   <p>
   <a href="<%= song.url %>"><%= song.url %></a><br />
+  <small>Posted by <%= User.find(song.user_id).email %> at </small>
   <small><%= song.created_at %></small>
   </p>
   <hr/>
