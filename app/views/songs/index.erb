@@ -1,4 +1,4 @@
-<% @songs.each.sort do |song| %>
+<% @songs.order("upvote_count DESC").each do |song| %>
   <h3>
   <a href="/songs/<%= song.id %>">
   <%= song.song_title %>
@@ -8,6 +8,8 @@
   
   <h4><%= song.genre %></h4>
   <p>Likes: <%= song.upvote_count %></p>
+  
+  <% if current_user %>
     <% unless current_user.already_voted?(song) %>
       <form 
         action = "songs/like/<%= song.id %>/<%= current_user.id %>" 
@@ -33,6 +35,7 @@
         >
       </form>
     <% end %>
+<% end %>
 
   <p>
   <a href="<%= song.url %>"><%= song.url %></a><br />
