@@ -13,12 +13,14 @@
 
 
 <form 
-  action = "songs/like" 
+  action = "songs/like/<%= song.id %>/<%= current_user.id %>" 
   method = "POST" 
-  type="button">
+  type = "button"
+  >
   <input 
     type = "submit" 
-    value="Like!">
+    value = "Like!"
+  >
 </form>
 
 

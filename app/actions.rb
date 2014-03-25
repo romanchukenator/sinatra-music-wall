@@ -45,27 +45,23 @@ post '/songs' do
   end
 end
 
-post '/songs/like/:id' do
-  # @like = Song.find(params[:id].update(
-  #   upvote_count: params[:upvote_count]
-  #   )
+post '/songs/like/:song_id/:user_id' do
+  Upvote.create(
+    song_id: params[:song_id],
+    user_id: params[:user_id]
+    )
+
+  vote = Song.find(params[:song_id]).upvote_count
+  vote += 1
+  Song.find(params[:song_id]).update(
+    upvote_count: vote
+    )
+
   puts "Like button working"
+  redirect '/songs'
 end
 
-# post '/songs/:id' do
-#   @song = Song.find(params[:id]).update(
-#     song_title: params[:song_title],
-#     artist: params[:artist],
-#     genre: params[:genre],
-#     url: params[:url]
-#     )
 
-#   if @song.save
-#     redirect '/songs'
-#   else
-#     erb :'songs/new'
-#   end
-# end
 
 # ========================
 # User shizz
@@ -100,7 +96,6 @@ post '/log_in' do
     email: params[:email], 
     password: params[:password]
     )
-
   if @user
     session[:user_id] = @user.id
     redirect '/'
