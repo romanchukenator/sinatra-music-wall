@@ -61,6 +61,23 @@ post '/songs/like/:song_id/:user_id' do
   redirect '/songs'
 end
 
+post '/songs/unlike/:song_id/:user_id' do
+  vote_id = Upvote.find_by(
+    song_id: params[:song_id],
+    user_id: params[:user_id]
+    ).id
+
+  Upvote.delete(vote_id)
+
+  vote = Song.find(params[:song_id]).upvote_count
+  vote -= 1
+  Song.find(params[:song_id]).update(
+    upvote_count: vote
+    )
+
+  puts "Like button working"
+  redirect '/songs'
+end
 
 
 # ========================
