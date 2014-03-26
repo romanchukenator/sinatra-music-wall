@@ -1,0 +1,19 @@
+{
+  "name": "sinatra-music-wall",
+  "version": "0.0.0",
+  "homepage": "https://github.com/romanchukenator/sinatra-music-wall",
+  "authors": [
+    "James Romanchuk <romanchukenator@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-rating-input": "~0.2.4"
+  }
+}

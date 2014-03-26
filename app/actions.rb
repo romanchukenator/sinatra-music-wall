@@ -91,9 +91,16 @@ post '/reviews/:song_id' do
     )
 
   if @review.save
-    # redirect '/songs/<%= @review.song_id %>'
     redirect '/songs/' + params[:song_id]
   else
     erb :'/songs'
   end
+end
+
+get '/delete/:song_id' do
+    Review.find_by(
+      song_id: params[:song_id],
+      user_id: current_user.id
+      ).delete
+    redirect '/songs/' + params[:song_id]
 end

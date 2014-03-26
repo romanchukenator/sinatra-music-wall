@@ -9,4 +9,11 @@ class User < ActiveRecord::Base
   def already_voted?(song)
     !!self.upvotes.find_by(song_id: song.id)
   end
+
+  def already_reviewed?(song)
+   !!self.reviews.find_by(song_id: song.id)
+  end 
+
 end
+
+
