@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 20140325233116) do
 
   create_table "reviews", force: true do |t|
-    t.string   "user_review"
+    t.string   "user_review" # varchar(255)
     t.integer  "user_rating"
-    t.string   "user_id"
-    t.string   "song_id"
+    t.string   "user_id" # integer
+    t.string   "song_id" # integer
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20140325233116) do
   end
 
   create_table "upvotes", force: true do |t|
-    t.string   "user_id"
-    t.string   "song_id"
+    t.string   "user_id" # integer
+    t.string   "song_id" # integer
     t.datetime "created_at"
     t.datetime "updated_at"
   end
