@@ -1,6 +1,6 @@
 class AddReviews < ActiveRecord::Migration
   def change
-    create_table :tables do |t|
+    create_table :reviews do |t|
       t.string :user_review
       t.integer :user_rating
       t.string :user_id

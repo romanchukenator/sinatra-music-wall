@@ -3,13 +3,58 @@
 
 <p><a href = "<%= @song.url %>"><%= @song.url %></a></p>
 
+<div class="col-xs-4">
 
+  <h5>Blab 'bout this track!</h5>
+    <form   
+      action = "/reviews/<%= @song.id %>" 
+      method = "POST" 
+      class = "form-group"
+      role = "form">
 
+    <div class = "form-group" for = "exampleInputEmail2">
+      <textarea class = "form-control" rows = "3" name = "user_review">
+Write a comment...
+      </textarea>
+    </div>
 
+    <div class = "form-group" for = "exampleInputEmail2">
+    
+      <label class="sr-only" >Rating</label>
+        <select class = "form-control" name = "user_rating">
+          <option selected = "selected" disabled = "disabled">Rating</option>
+          <option value ="1">1</option>
+          <option value ="2">2</option>
+          <option value ="3">3</option>
+          <option value ="4">4</option>
+          <option value ="5">5</option>
+        </select>
 
+      <input type = "submit" value = "Submit" class = "btn btn-default">
+    </div>
+
+    </form>
+
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class = "col-xs-4" data-spy="scroll" data-target=".navbar-example">
 <hr/>
 <h5>These fuckers have shit to say about this song:</h5>
 
-<% Upvote.where(song_id: @song.id).each do |hubub| %>
-  <p><%= User.find(hubub.user_id).email %></p>
+<% Review.where(song_id: @song.id).each do |hubub| %>
+  <p><%= hubub.user_rating %></p>
+  <p><%= hubub.user_review %></p>
 <% end %>
+</div>

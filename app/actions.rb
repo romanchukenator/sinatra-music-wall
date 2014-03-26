@@ -78,15 +78,22 @@ post '/songs/unlike/:song_id/:user_id' do
 end
 
 
+# =====================
+# Posting Reviews
+# =====================
 
+post '/reviews/:song_id' do
+  @review = Review.new(
+    user_review: params[:user_review],
+    user_rating: params[:user_rating],
+    song_id: params[:song_id],
+    user_id: current_user.id,
+    )
 
-
-
-
-
-
-
-
-
-
-
+  if @review.save
+    # redirect '/songs/<%= @review.song_id %>'
+    redirect '/songs/' + params[:song_id]
+  else
+    erb :'/songs'
+  end
+end
