@@ -76,13 +76,13 @@ end
 # Posting Reviews
 # =====================
 
-post '/reviews/:song_id' do
-  @review = Review.new(
+post '/songs/:song_id/review' do
+  @song = Song.find params[:song_id]
+  current_user.reviews.new(
+    song: @song,
     user_review: params[:user_review],
-    user_rating: params[:user_rating],
-    song_id: params[:song_id],
-    user_id: current_user.id,
-    )
+    user_rating: params[:user_rating]
+  )
 
   if @review.save
     redirect '/songs/' + params[:song_id]
@@ -91,10 +91,8 @@ post '/reviews/:song_id' do
   end
 end
 
-get '/delete/:song_id' do
-    Review.find_by(
-      song_id: params[:song_id],
-      user_id: current_user.id
-      ).delete
-    redirect '/songs/' + params[:song_id]
+delete '/songs/:song_id/review' do
+  @song = Song.find params[:song_id]
+  @review = current_user.reviews.find_by(song_id: @song.id)
+  redirect '/songs/' + params[:song_id]
 end
