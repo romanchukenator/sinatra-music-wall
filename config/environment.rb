@@ -8,6 +8,8 @@ require 'sinatra'
 require 'sinatra/activerecord'
 
 require 'pry'
+require 'factory_girl'
+require 'faker'
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
@@ -29,3 +31,6 @@ require APP_ROOT.join('config', 'database')
 # Load the routes / actions
 require APP_ROOT.join('app', 'actions')
 require APP_ROOT.join('app', 'auth')
+
+require APP_ROOT.join('factories', 'users')
+require APP_ROOT.join('factories', 'songs')

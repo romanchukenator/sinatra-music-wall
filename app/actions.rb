@@ -10,7 +10,14 @@ get '/' do
 end
 
 get '/songs' do
-  @songs = Song.order("upvote_count DESC").all
+  # SELECT * FROM songs ORDER BY songs.upvote_count
+  @songs = Song.order(:upvote_count)
+  if params[:user_id].present? # not nil or empty string!
+    @songs = @songs.where(user_id: params[:user_id])
+  end
+  if params[:min_votes].present? # not nil or empty string!
+    @songs = @songs.where('upvote_count >= ?', params[:min_votes])
+  end
   erb :'songs/index'
 end
 
@@ -30,13 +37,12 @@ get 'songs/:artist' do
 end
 
 post '/songs' do
-  @song = Song.new(
+  @song = current_user.songs.new(
     song_title: params[:song_title],
     artist: params[:artist],
     genre: params[:genre],
-    url: params[:url],
-    user_id: current_user.id
-    )
+    url: params[:url]
+  )
 
   if @song.save
     redirect '/songs'

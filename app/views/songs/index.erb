@@ -1,3 +1,20 @@
+<h1>Songs</h1>
+
+<h4>Filters</h4>
+<form action="/songs" method="GET">
+  <input type="text" name="min_votes" placeholder="Min Votes" value="<%= params[:min_votes] %>">
+  <select name="user_id">
+    <% User.where('email IS NOT NULL').order(:email).each do |user| %>
+      <option value="<%= user.id %>"><%= user.email %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Filter">
+</form>
+
+<hr/>
+
+
+<h4>List</h4>
 <% @songs.each do |song| %>
   <h3>
   <a href="/songs/<%= song.id %>">
@@ -5,20 +22,20 @@
   </a>
   <small> by <%= song.artist %></small>
   </h3>
-  
+
   <h4><%= song.genre %></h4>
   <p>Likes: <%= song.upvote_count %></p>
-  
+
   <% if current_user %>
 
     <% unless current_user.already_voted?(song) %>
-      <form 
-        action = "songs/like/<%= song.id %>/<%= current_user.id %>" 
-        method = "POST" 
+      <form
+        action = "songs/like/<%= song.id %>/<%= current_user.id %>"
+        method = "POST"
         type = "button"
         >
-        <input 
-          type = "submit" 
+        <input
+          type = "submit"
           value = "Like!"
           class="btn btn-primary btn-xs"
         >
@@ -26,13 +43,13 @@
     <% end %>
 
     <% if current_user.already_voted?(song) %>
-      <form 
-        action = "songs/unlike/<%= song.id %>/<%= current_user.id %>" 
-        method = "POST" 
+      <form
+        action = "songs/unlike/<%= song.id %>/<%= current_user.id %>"
+        method = "POST"
         type = "button"
         >
-        <input 
-          type = "submit" 
+        <input
+          type = "submit"
           value = "Unlike!"
           class="btn btn-danger btn-xs"
         >
