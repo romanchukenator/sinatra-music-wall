@@ -58,26 +58,16 @@ end
 # end
 
 # Create the upvote
-post '/songs/:song_id/upvotes' do
+post '/songs/:song_id/upvote' do
   @song = Song.find params[:song_id]
   @upvote = @song.upvotes.create(user: current_user)
   redirect '/songs'
 end
 
-post '/songs/unlike/:song_id/:user_id' do
-  vote_id = Upvote.find_by(
-    song_id: params[:song_id],
-    user_id: params[:user_id]
-    ).id
-
-  Upvote.delete(vote_id)
-
-  vote = Song.find(params[:song_id]).upvote_count
-  vote -= 1
-  Song.find(params[:song_id]).update(
-    upvote_count: vote
-    )
-
+delete '/songs/:song_id/upvote' do
+  @song = Song.find params[:song_id]
+  @upvote = current_user.upvotes.find_by(song_id: @song.id)
+  @upvote.destroy
   redirect '/songs'
 end
 
